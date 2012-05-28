@@ -1,0 +1,7 @@
+D:\development\chi\CountryInfo\CountryInfo\bin\CountryInfo.dll
+D:\development\chi\CountryInfo\CountryInfo\bin\CountryInfo.pdb
+D:\development\chi\CountryInfo\CountryInfo\bin\EntityFramework.dll
+D:\development\chi\CountryInfo\CountryInfo\bin\EntityFramework.xml
+D:\development\chi\CountryInfo\CountryInfo\obj\Debug\ResolveAssemblyReference.cache
+D:\development\chi\CountryInfo\CountryInfo\obj\Debug\CountryInfo.dll
+D:\development\chi\CountryInfo\CountryInfo\obj\Debug\CountryInfo.pdb
