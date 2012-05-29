@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="countryinfodb" Class="CountryInfoModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=BRUNO-PC\SQLEXPRESS;Initial Catalog=countryinfodb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="countryinfodbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Continents" Member="Continents">
+    <Type Name="Continent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Continent_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Continent_Country" Member="Countries" ThisKey="Id" OtherKey="Continent_ID" Type="Country" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Countries" Member="Countries">
+    <Type Name="Country">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Country_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Continent_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Country_Information" Member="Informations" ThisKey="Id" OtherKey="Country_Id" Type="Information" />
+      <Association Name="Continent_Country" Member="Continent" ThisKey="Continent_ID" OtherKey="Id" Type="Continent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Informations" Member="Informations">
+    <Type Name="Information">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Country_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Information_Text" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IPAddress" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Country_Information" Member="Country" ThisKey="Country_Id" OtherKey="Id" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,8 +1,19 @@
-﻿@{
+﻿@model IEnumerable<CountryInfo.Models.Continent>
+           
+@{
     ViewBag.Title = "Home Page";
 }
 
 <h2>@ViewBag.Message</h2>
 <p>
-   
+   @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Continent_Name)
+        </td>
+    </tr>
+}
 </p>
