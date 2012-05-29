@@ -6,14 +6,11 @@
 
 <h2>@ViewBag.Message</h2>
 <p>
+<ul>
    @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Continent_Name)
-        </td>
-    </tr>
-}
+        <li>
+          @Html.ActionLink(item.Continent_Name, "CountryInfo", new { id = item.Id })
+        </li>
+    }
+</ul>
 </p>

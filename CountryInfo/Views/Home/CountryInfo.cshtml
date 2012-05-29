@@ -1,0 +1,14 @@
+﻿@model IEnumerable<CountryInfo.Models.Country>
+@{
+    ViewBag.Title = "CountryInfo";
+}
+
+<h2>CountryInfo</h2>
+
+@ViewBag.Message
+
+   @foreach (var item in Model) {
+        <li>
+          @Html.ActionLink(item.Country_Name, "Comment", new { id = item.Id })
+        </li>
+    }
