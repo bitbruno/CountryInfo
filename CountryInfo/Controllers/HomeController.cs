@@ -10,13 +10,14 @@ namespace CountryInfo.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            //show the list of countinents in the index page.
 
             return View();
         }
 
         public ActionResult About()
         {
+            ViewBag.About = "CountryInfo \nCHI .NET Exercise\nAuthor: Bruno Cardoso";
             return View();
         }
     }
