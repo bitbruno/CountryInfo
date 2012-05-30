@@ -7,8 +7,30 @@
 
 @ViewBag.Message
 
-   @foreach (var item in Model) {
+    <div id="info_form">
+        <form id="submit_info" method="post" name="submit" action="">
+			    <br />
+			    <input type="textbox" name="info_text" id="info_text" class="text" size="100" />
+                <select id="select_country">
+                    @foreach (var item in Model) {
+                        <option value="@item.Id">@item.Country_Name</option>
+                    }
+                </select> 
+			    <button type="button" class="button" onClick="process_post_form();">Save</button>
+        </form>
+    </div>
+    <div id="failOver" style="display:none;" class="form_fail">
+			<p>Your post must have at maximum 250 characters.</p>
+		</div>
+    <div id="failUnder" style="display:none;" class="form_fail">
+			<p>Please type something before saving.</p>
+    </div>
+    
+
+
+   @foreach (var item in Model)
+   {
         <li>
-          @Html.ActionLink(item.Country_Name, "Comment", new { id = item.Id })
+          <a href="#" onClick="change_country(@item.Id);">@item.Country_Name </a>
         </li>
     }

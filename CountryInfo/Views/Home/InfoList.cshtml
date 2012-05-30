@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CountryInfo.Models.Information>
+@{
+    ViewBag.Title = "InfoList";
+}
+
+<h2>InfoList</h2>
+<p>
+<ul>
+   @foreach (var item in Model) {
+        <li>
+            @item.Id  |  @item.Information_Text   |   @item.Time   |    @item.IPAddress   |  @item.Location   |   @item.Country.Country_Name  
+        </li>
+    }
+</ul>
+</p>
