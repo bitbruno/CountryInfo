@@ -28,7 +28,7 @@ namespace CountryInfo.Controllers
             return View(db.Informations.ToList());
         }
 
-
+        /*
         // GET: /Home/CountryInfo/3
         public ActionResult CountryInfo(int id = 0)
         {
@@ -44,6 +44,27 @@ namespace CountryInfo.Controllers
             {
                 return RedirectToAction("Index");
             }
+
+            //show a list of continents
+            return View(countries);
+        }
+        */
+        // GET: /Home/CountryInfo/3
+        public ActionResult CountryInfo(string id = "")
+        {
+            ViewBag.Message = "List of Countries";
+
+            //select the countries that belong to the selected continent
+            var countries = from c in db.Countries where c.Continent.Continent_Name == id select c;
+
+
+            //if the user enters in the CountrtInfo page without any parameter or the user types a id for an unexistent continent return to the main page
+            if (id == "" || countries.Count() == 0)
+            {
+                return RedirectToAction("Index");
+            }
+            ViewBag.Continent = id;
+
 
             //show a list of continents
             return View(countries);

@@ -5,12 +5,21 @@
 }
 
 <h2>@ViewBag.Message</h2>
-<p>
-<ul>
-   @foreach (var item in Model) {
-        <li>
-          @Html.ActionLink(item.Continent_Name, "CountryInfo", new { id = item.Id })
-        </li>
-    }
-</ul>
-</p>
+
+
+<div style="text-align:center; width:800px; margin-left:auto; margin-right:auto;">
+<img id="world_map" src="@Url.Content("~/Content/Images/world.png")" usemap="#world_map" border="0" width="800" height="400" alt="" />
+<map id="_world_map" name="world_map">
+@RenderPage(@Url.Content("~/Content/Maps/World.cshtml"))
+</map>
+<div style="text-align:center; font-size:12px; font-family:verdana; margin-left:auto; margin-right:auto; width:800px;">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.Continent_Name, "CountryInfo", new { id = item.Continent_Name })
+            </li>
+        }
+    </ul>
+</div>
+</div>

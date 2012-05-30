@@ -7,15 +7,29 @@
 
 @ViewBag.Message
 
+
+
+
+    
+
+
+<div style="text-align:center; width:800px; margin-left:auto; margin-right:auto;">
+<img id="continent_map" src="@Url.Content("~/Content/Images/" + ViewBag.Continent +".png")" usemap="#continent_map" border="0" width="800" height="400" alt="" />
+<map id="_continent_map" name="continent_map">
+@RenderPage(@Url.Content("~/Content/Maps/" + ViewBag.Continent + ".cshtml"))
+</map>
+</div>
+</div>
+
     <div id="info_form">
         <form id="submit_info" method="post" name="submit" action="">
 			    <br />
-			    <input type="textbox" name="info_text" id="info_text" class="text" size="100" />
                 <select id="select_country">
                     @foreach (var item in Model) {
-                        <option value="@item.Id">@item.Country_Name</option>
+                        <option value="@item.Country_Name">@item.Country_Name</option>
                     }
                 </select> 
+                <input type="textbox" name="info_text" id="info_text" class="text" size="100" />
 			    <button type="button" class="button" onClick="process_post_form();">Save</button>
         </form>
     </div>
@@ -25,12 +39,3 @@
     <div id="failUnder" style="display:none;" class="form_fail">
 			<p>Please type something before saving.</p>
     </div>
-    
-
-
-   @foreach (var item in Model)
-   {
-        <li>
-          <a href="#" onClick="change_country(@item.Id);">@item.Country_Name </a>
-        </li>
-    }

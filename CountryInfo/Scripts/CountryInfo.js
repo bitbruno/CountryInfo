@@ -32,10 +32,19 @@ function process_post_form() {
     });
 }
 
-function change_country(country_id) {
-    $(document).ready(function () {
-        $('#select_country').val(country_id);
-    });
-}
 
+$(document).ready(function () {
+    $('#world_map').maphilight();
+
+
+    $("#_world_map").click(function (event) {
+        var continent_name = event.target.title;
+        window.location = "/Home/CountryInfo/" + continent_name;
+    });
+
+    $("#_continent_map").click(function (event) {
+        var country_name = event.target.title;
+        $('#select_country').val(country_name);
+    });
+});
 

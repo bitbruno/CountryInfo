@@ -74,12 +74,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Africa.png" />
+    <Content Include="Content\Images\America.png" />
+    <Content Include="Content\Images\Asia.png" />
+    <Content Include="Content\Images\Europe.png" />
+    <Content Include="Content\Images\Oceania.png" />
+    <Content Include="Content\Maps\Africa.cshtml" />
+    <Content Include="Content\Maps\America.cshtml" />
+    <Content Include="Content\Maps\Asia.cshtml" />
+    <Content Include="Content\Maps\Europe.cshtml" />
+    <Content Include="Content\Maps\Oceania.cshtml" />
+    <None Include="Content\Maps\World.cshtml" />
+    <Content Include="Content\Images\world.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.maphilight.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -116,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
