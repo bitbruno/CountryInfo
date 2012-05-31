@@ -86,6 +86,7 @@
     <Content Include="Content\Maps\Oceania.cshtml" />
     <None Include="Content\Maps\World.cshtml" />
     <Content Include="Content\Images\world.png" />
+    <Content Include="Content\Style\CountryInfo.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -167,7 +168,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56658</DevelopmentServerPort>
+          <DevelopmentServerPort>62618</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -11,7 +11,10 @@ function process_post_form() {
                 url: "/Home/CountryInfo/",
                 data: "info_text=" + info_text + "&selectedCountry=" + selectedCountry,
                 success: function () {
-
+                    $('#info_form').hide();
+                    $('#success').slideDown();
+                    $('#success').delay(2000);
+                    $('#success').slideUp();
                 }
             });
             return true;
@@ -32,10 +35,15 @@ function process_post_form() {
     });
 }
 
+function cancel_post() {
+    $('#info_form').hide();
+}
+
 
 $(document).ready(function () {
+    //highlighting the maps
     $('#world_map').maphilight();
-
+    $('#continent_map').maphilight();
 
     $("#_world_map").click(function (event) {
         var continent_name = event.target.title;
@@ -45,6 +53,7 @@ $(document).ready(function () {
     $("#_continent_map").click(function (event) {
         var country_name = event.target.title;
         $('#select_country').val(country_name);
+        $('#info_form').show();
     });
 });
 

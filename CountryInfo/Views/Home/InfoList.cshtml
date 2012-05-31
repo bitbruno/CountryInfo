@@ -3,13 +3,30 @@
     ViewBag.Title = "InfoList";
 }
 
-<h2>InfoList</h2>
-<p>
+<h2>Information List</h2>
+
+<div id="info_list">
 <ul>
+    <li>
+        <ul>
+                <li>Country</li>
+                <li>Information</li>
+                <li>Time</li>
+                <li>IP Address</li>
+                <li>Location</li>
+            </ul>
+    </li>
    @foreach (var item in Model) {
         <li>
-            @item.Id  |  @item.Information_Text   |   @item.Time   |    @item.IPAddress   |  @item.Location   |   @item.Country.Country_Name  
+            <ul>
+                <li>@item.Country.Country_Name</li>
+                <li>@item.Information_Text</li>
+                <li>@item.Time</li>
+                <li>@item.IPAddress</li>
+                <li>@item.Location</li>
+            </ul>
+            
         </li>
     }
 </ul>
-</p>
+</div>

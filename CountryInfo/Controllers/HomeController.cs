@@ -16,8 +16,8 @@ namespace CountryInfo.Controllers
         // GET: /
         public ActionResult Index()
         {
-            //show the list of countinents in the index page.
-            ViewBag.Message = "List of Continents";
+            //show the map of continents in the index page.
+            ViewBag.Message = "Select a continent";
             return View(db.Continents.ToList());
         }
 
@@ -28,31 +28,10 @@ namespace CountryInfo.Controllers
             return View(db.Informations.ToList());
         }
 
-        /*
-        // GET: /Home/CountryInfo/3
-        public ActionResult CountryInfo(int id = 0)
-        {
-            ViewBag.Message = "List of Countries";
-            ViewBag.continentID = id;
-
-            //select the countries that belong to the selected continent
-            var countries = from c in db.Countries where c.Continent_ID == id select c;
-
-
-            //if the user enters in the CountrtInfo page without any parameter or the user types a id for an unexistent continent return to the main page
-            if (id == 0 || countries.Count() == 0)
-            {
-                return RedirectToAction("Index");
-            }
-
-            //show a list of continents
-            return View(countries);
-        }
-        */
-        // GET: /Home/CountryInfo/3
+        // GET: /Home/CountryInfo/America
         public ActionResult CountryInfo(string id = "")
         {
-            ViewBag.Message = "List of Countries";
+            ViewBag.Message = "Select a country";
 
             //select the countries that belong to the selected continent
             var countries = from c in db.Countries where c.Continent.Continent_Name == id select c;
@@ -74,14 +53,15 @@ namespace CountryInfo.Controllers
         // POST: /Home/CountryInfo/
 
         [HttpPost]
-        public ActionResult CountryInfo(string info_text, int selectedCountry)
+        public ActionResult CountryInfo(string info_text, string selectedCountry)
         {
             string ipAddress = Request.ServerVariables["REMOTE_ADDR"];
           
             Information info = new Information();
             info.Information_Text = info_text;
             info.IPAddress = ipAddress;
-            info.Country_Id = selectedCountry;
+            var countrt_id = from c in db.Countries where c.Country_Name == selectedCountry select c.Id;
+            info.Country_Id = countrt_id.Single();
             info.Time = DateTime.Now;
             info.Location = GetLocation(ipAddress);
 
@@ -95,7 +75,6 @@ namespace CountryInfo.Controllers
         // GET: /Home/About/
         public ActionResult About()
         {
-            ViewBag.About = "CountryInfo \nCHI .NET Exercise\nAuthor: Bruno Cardoso";
             return View();
         }
 

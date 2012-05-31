@@ -3,17 +3,9 @@
     ViewBag.Title = "CountryInfo";
 }
 
-<h2>CountryInfo</h2>
+<h2>@ViewBag.Message</h2>
 
-@ViewBag.Message
-
-
-
-
-    
-
-
-<div style="text-align:center; width:800px; margin-left:auto; margin-right:auto;">
+<div class="map" style="text-align:center; width:800px; margin-left:auto; margin-right:auto;">
 <img id="continent_map" src="@Url.Content("~/Content/Images/" + ViewBag.Continent +".png")" usemap="#continent_map" border="0" width="800" height="400" alt="" />
 <map id="_continent_map" name="continent_map">
 @RenderPage(@Url.Content("~/Content/Maps/" + ViewBag.Continent + ".cshtml"))
@@ -21,21 +13,41 @@
 </div>
 </div>
 
-    <div id="info_form">
-        <form id="submit_info" method="post" name="submit" action="">
-			    <br />
-                <select id="select_country">
-                    @foreach (var item in Model) {
-                        <option value="@item.Country_Name">@item.Country_Name</option>
-                    }
-                </select> 
-                <input type="textbox" name="info_text" id="info_text" class="text" size="100" />
-			    <button type="button" class="button" onClick="process_post_form();">Save</button>
-        </form>
-    </div>
-    <div id="failOver" style="display:none;" class="form_fail">
-			<p>Your post must have at maximum 250 characters.</p>
-		</div>
-    <div id="failUnder" style="display:none;" class="form_fail">
-			<p>Please type something before saving.</p>
-    </div>
+<div id="info_form" style="display:none">
+    <form id="submit_info" method="post" name="submit" action="">
+			<ul>
+                <li>
+                    <h2>
+                        Enter the information about the country
+                    </h2>
+                </li>
+                <li>
+                    <label class="form-label-left" id="label_1" for="input_1"> Information </label>
+                    <input type="textbox" name="info_text" id="info_text" class="text" size="80" />
+                </li>
+                <li>
+			        <label class="form-label-left" id="label_3" for="input_3"> Country </label>
+                    <select id="select_country">
+                        @foreach (var item in Model) {
+                            <option value="@item.Country_Name">@item.Country_Name</option>
+                        }
+                    </select> 
+                </li>
+                <li>
+                    <button type="button" class="button" onClick="process_post_form();">Save</button>
+                    <button type="button" class="button" onClick="cancel_post();">Cancel</button>
+                </li>
+            </ul>
+    </form>
+
+<div id="failOver" style="display:none;" class="form_fail">
+		<p>Your post must have at maximum 250 characters.</p>
+	</div>
+<div id="failUnder" style="display:none;" class="form_fail">
+		<p>Please type something before saving.</p>
+</div>
+</div>
+<div id="success" style="display:none;" class="success">
+		<p>Information added successfully</p>
+</div>
+
