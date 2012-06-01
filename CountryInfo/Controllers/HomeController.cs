@@ -25,9 +25,25 @@ namespace CountryInfo.Controllers
         // GET: /Home/InfoList/
         public ActionResult InfoList()
         {
-            //show a list withh all the informations stored in the database
+            //show a list with all the informations stored in the database
             ViewBag.Message = "List of informations about the countries";
             return View(db.Informations.ToList());
+        }
+
+        // GET: /Home/CountryInfoList/
+        public ActionResult CountryInfoList(string id = "")
+        {
+            //return all the informations available of the selected country
+            ViewBag.Message = "List of informations about the countries";
+
+            //select the countries that belong to the selected continent by the continent name
+            var infos = from c in db.Informations where c.Country.Country_Name == id select c;
+            //if the user enters in the CountryInfoList page without any parameter or the user types a id for an unexistent country return nothing
+            if (id == "" || infos.Count() == 0)
+            {
+                return null;
+            }
+            return View(infos);
         }
 
         // GET: /Home/CountryInfo/America
@@ -37,9 +53,6 @@ namespace CountryInfo.Controllers
 
             //select the countries that belong to the selected continent by the continent name
             var countries = from c in db.Countries where c.Continent.Continent_Name == id select c;
-
-            
-
             //if the user enters in the CountrtInfo page without any parameter or the user types a id for an unexistent continent return to the main page
             if (id == "" || countries.Count() == 0)
             {
@@ -68,7 +81,7 @@ namespace CountryInfo.Controllers
             info.IPAddress = ipAddress;
             //Get the Country ID from the country name to store in the information object
             var countrt_id = from c in db.Countries where c.Country_Name == selectedCountry select c.Id;
-            info.Country_Id = countrt_id.Single();
+            info.Country_Id = countrt_id.First();
             //Always save the current time
             info.Time = DateTime.Now;
 
@@ -79,7 +92,7 @@ namespace CountryInfo.Controllers
             db.Informations.InsertOnSubmit(info);
             db.SubmitChanges();
 
-            return RedirectToAction("CountryInfo");
+            return null;
         }
 
         // GET: /Home/About/

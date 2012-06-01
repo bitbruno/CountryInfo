@@ -1,0 +1,15 @@
+﻿<div id="country_info_list_wrapper">
+    <div id="show_info" onmouseover="info_fadeIn();" onmouseout="info_fadeOut();">View previous message(s)</div>
+    <div id="country_info_list">
+        <ul id="show_info_list">
+           @foreach (var item in Model) {
+                <li>
+                    <ul>
+                        <li>@item.Information_Text | @item.Time</li>
+                    </ul>
+            
+                </li>
+            }
+        </ul>
+    </div>
+</div>
